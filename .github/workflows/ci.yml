@@ -24,7 +24,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -33,9 +32,8 @@ jobs:
           pip install -r backend/requirements.txt
 
       - name: Run backend tests
-        run: |
-          cd backend
-          python -m pytest test_main.py -v --tb=short
+        working-directory: backend
+        run: python -m pytest test_main.py -v --tb=short
 
   # Frontend Tests
   frontend-test:
@@ -81,7 +79,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -89,8 +86,7 @@ jobs:
           pip install -e ".[dev]"
 
       - name: Run core tests
-        run: |
-          python -m pytest tests/ -v --tb=short
+        run: python -m pytest tests/ -v --tb=short
 
   # Docker Build
   docker-build:
