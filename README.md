@@ -1,6 +1,6 @@
 # Q-Route Alpha
 
-[![CI](https://github.com/YOUR_USERNAME/QOptimiser/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/QOptimiser/actions/workflows/ci.yml)
+[![CI](https://github.com/yashas396/q-root-alpha/actions/workflows/ci.yml/badge.svg)](https://github.com/yashas396/q-root-alpha/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 **Quantum-Ready Logistics Optimizer**
