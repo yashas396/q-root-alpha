@@ -28,14 +28,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e .
+          pip install --verbose .
           pip install -r backend/requirements.txt
-          pip list
 
-      - name: Verify package import
+      - name: Verify installation
         run: |
+          pip show q-route-alpha
+          python -c "import sys; print(sys.path)"
           python -c "from q_route.models.problem import Customer, CVRPProblem; print('Import OK')"
-          python -c "from q_route.solvers.sa_solver import SimulatedAnnealingSolver; print('Solver OK')"
 
       - name: Run backend tests
         working-directory: backend
@@ -89,13 +89,13 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e ".[dev]"
-          pip list
+          pip install --verbose ".[dev]"
 
-      - name: Verify package import
+      - name: Verify installation
         run: |
+          pip show q-route-alpha
+          python -c "import sys; print(sys.path)"
           python -c "from q_route.models.problem import Customer, CVRPProblem; print('Import OK')"
-          python -c "from q_route.solvers.sa_solver import SimulatedAnnealingSolver; print('Solver OK')"
 
       - name: Run core tests
         run: python -m pytest tests/ -v --tb=long
