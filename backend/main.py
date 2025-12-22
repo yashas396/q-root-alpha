@@ -6,26 +6,25 @@ POST /solve - Submit CVRP problem, returns optimized route.
 """
 
 import os
-import sys
-from pathlib import Path
 from typing import List, Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
 
-# Add parent directory to path for q_route import
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+# q_route is now included locally in backend/q_route/
 
 # =============================================================================
 # Configuration from Environment
 # =============================================================================
 
 APP_VERSION = os.getenv("APP_VERSION", "0.1.0")
-CORS_ORIGINS = os.getenv(
+_cors_env = os.getenv(
     "CORS_ORIGINS",
-    "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,http://127.0.0.1:3000"
-).split(",")
+    "http://localhost:5173,http://localhost:5174,http://localhost:3000,http://127.0.0.1:5173,http://127.0.0.1:5174,http://127.0.0.1:3000"
+)
+# Allow all origins if "*" is set, otherwise use the comma-separated list
+CORS_ORIGINS = ["*"] if _cors_env == "*" else _cors_env.split(",")
 DEFAULT_NUM_READS = int(os.getenv("DEFAULT_NUM_READS", "1000"))
 DEFAULT_NUM_SWEEPS = int(os.getenv("DEFAULT_NUM_SWEEPS", "1000"))
 MAX_CUSTOMERS = int(os.getenv("MAX_CUSTOMERS", "50"))
