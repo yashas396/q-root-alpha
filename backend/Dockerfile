@@ -1,54 +1,30 @@
 # Backend Dockerfile for Q-Route Alpha FastAPI
-# Multi-stage build for smaller production image
-
-# Stage 1: Build dependencies
-FROM python:3.11-slim AS builder
+# Build context: repository root (not backend/)
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install build dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Create virtual environment
-RUN python -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-
-# Copy and install the q_route package
-COPY pyproject.toml .
-COPY src/ ./src/
-RUN pip install --no-cache-dir .
-
-# Copy backend requirements and install
-COPY backend/requirements.txt ./requirements.txt
+# Copy and install backend requirements
+COPY backend/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Stage 2: Production image
-FROM python:3.11-slim AS production
+# Copy and install the q_route core package
+COPY pyproject.toml ./
+COPY src/ ./src/
+RUN pip install --no-cache-dir -e .
 
-WORKDIR /app
-
-# Install runtime dependencies only
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    && rm -rf /var/lib/apt/lists/* \
-    && useradd --create-home --shell /bin/bash appuser
-
-# Copy virtual environment from builder
-COPY --from=builder /opt/venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-
-# Copy application code
-COPY backend/main.py .
-
-# Set ownership and switch to non-root user
-RUN chown -R appuser:appuser /app
-USER appuser
+# Copy backend code
+COPY backend/main.py ./
 
 # Environment variables
 ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
+    PYTHONPATH=/app/src
 
 # Expose port
 EXPOSE 8000
@@ -57,5 +33,5 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
-# Run FastAPI with uvicorn (production settings)
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+# Run FastAPI
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

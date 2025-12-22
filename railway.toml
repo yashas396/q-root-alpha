@@ -1,0 +1,18 @@
+# Railway Configuration for Q-Route Alpha
+# https://docs.railway.app/reference/config-as-code
+
+[build]
+# Use Docker builder
+builder = "dockerfile"
+# Dockerfile is in backend directory but needs root context
+dockerfilePath = "backend/Dockerfile"
+
+[deploy]
+# Health check endpoint
+healthcheckPath = "/health"
+healthcheckTimeout = 100
+# Number of replicas
+numReplicas = 1
+# Restart policy
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
