@@ -1,0 +1,36 @@
+# Fly.io Configuration - Q-Route Alpha Backend
+# Deploy with: fly launch
+
+app = "q-route-alpha"
+primary_region = "iad"
+
+[build]
+  dockerfile = "backend/Dockerfile"
+
+[env]
+  APP_VERSION = "0.1.0"
+  MAX_CUSTOMERS = "50"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = "requests"
+    hard_limit = 250
+    soft_limit = 200
+
+[[http_service.checks]]
+  interval = "30s"
+  timeout = "10s"
+  grace_period = "10s"
+  method = "GET"
+  path = "/health"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512

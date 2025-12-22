@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* Q-Route Alpha Design System Colors */
+:root {
+  /* Primary Palette */
+  --color-quantum-blue: #0043CE;
+  --color-route-green: #24A148;
+  --color-energy-orange: #FF832B;
+  --color-constraint-red: #DA1E28;
+
+  /* Neutral Palette */
+  --color-gray-900: #1A1A2E;
+  --color-gray-700: #4A4A68;
+  --color-gray-400: #9E9EB8;
+  --color-gray-200: #D1D1E0;
+  --color-gray-100: #E8E8F0;
+  --color-gray-50: #F8F8FC;
+
+  /* Semantic */
+  --color-success: #24A148;
+  --color-warning: #FF832B;
+  --color-error: #DA1E28;
+  --color-info: #0043CE;
+}
+
+/* IBM Plex Sans Font */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono&display=swap');
+
+body {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-900);
+  margin: 0;
+  min-height: 100vh;
+}
+
+code, pre, .mono {
+  font-family: 'IBM Plex Mono', Consolas, Monaco, monospace;
+}
+
+/* Leaflet Map Styles */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-700);
+}

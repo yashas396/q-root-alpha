@@ -1,0 +1,79 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "q-route-alpha"
+version = "0.1.0"
+description = "Quantum-Ready Logistics Optimizer using QUBO formulation"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Quantum Gandiva AI"}
+]
+keywords = ["quantum", "optimization", "logistics", "QUBO", "CVRP", "vehicle-routing"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "dwave-ocean-sdk>=6.0.0",
+    "dwave-samplers>=1.0.0",
+    "dimod>=0.12.0",
+    "numpy>=1.24.0",
+    "matplotlib>=3.7.0",
+    "networkx>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "mypy>=1.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+qiskit = [
+    "qiskit>=1.0.0",
+    "qiskit-optimization>=0.6.0",
+]
+
+[project.scripts]
+q-route = "q_route.cli.main:main"
+
+[project.urls]
+Documentation = "https://github.com/quantum-gandiva/q-route-alpha#readme"
+Source = "https://github.com/quantum-gandiva/q-route-alpha"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"

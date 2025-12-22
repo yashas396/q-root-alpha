@@ -1,0 +1,81 @@
+{
+  "name": "medium-10-node",
+  "description": "10-customer CVRP instance for benchmarking",
+  "depot": {
+    "x": 0,
+    "y": 0
+  },
+  "customers": [
+    {
+      "id": 1,
+      "x": 10,
+      "y": 15,
+      "demand": 3,
+      "name": "Customer A"
+    },
+    {
+      "id": 2,
+      "x": -8,
+      "y": 12,
+      "demand": 2,
+      "name": "Customer B"
+    },
+    {
+      "id": 3,
+      "x": 5,
+      "y": -10,
+      "demand": 4,
+      "name": "Customer C"
+    },
+    {
+      "id": 4,
+      "x": -12,
+      "y": -5,
+      "demand": 2,
+      "name": "Customer D"
+    },
+    {
+      "id": 5,
+      "x": 8,
+      "y": 8,
+      "demand": 3,
+      "name": "Customer E"
+    },
+    {
+      "id": 6,
+      "x": -5,
+      "y": 18,
+      "demand": 2,
+      "name": "Customer F"
+    },
+    {
+      "id": 7,
+      "x": 15,
+      "y": -8,
+      "demand": 3,
+      "name": "Customer G"
+    },
+    {
+      "id": 8,
+      "x": -15,
+      "y": 3,
+      "demand": 2,
+      "name": "Customer H"
+    },
+    {
+      "id": 9,
+      "x": 12,
+      "y": 5,
+      "demand": 2,
+      "name": "Customer I"
+    },
+    {
+      "id": 10,
+      "x": -3,
+      "y": -12,
+      "demand": 2,
+      "name": "Customer J"
+    }
+  ],
+  "vehicle_capacity": 30
+}

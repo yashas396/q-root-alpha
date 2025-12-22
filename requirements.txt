@@ -1,0 +1,24 @@
+# Q-Route Alpha - Phase 2 Core Dependencies
+# ==========================================
+# This file lists the Python packages required to run the
+# Quantum-Inspired Logistics Routing Engine simulation.
+#
+# Install with: pip install -r requirements.txt
+# ==========================================
+
+# D-Wave Neal: Provides SimulatedAnnealingSampler for local QUBO optimization.
+# This is a classical simulator - no D-Wave API key or cloud access required.
+# Cost: $0 (runs entirely locally)
+dwave-neal
+
+# NetworkX: Graph library used for representing the routing network.
+# Provides graph data structures and algorithms.
+networkx
+
+# Matplotlib: Visualization library for plotting the optimized route.
+# Used to generate the route map with nodes and edges.
+matplotlib
+
+# NumPy: Fundamental package for numerical computing.
+# Used for distance matrix calculations and array operations.
+numpy

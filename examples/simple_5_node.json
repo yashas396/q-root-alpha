@@ -1,0 +1,46 @@
+{
+  "name": "simple-5-node",
+  "description": "5-customer CVRP demonstration instance",
+  "depot": {
+    "x": 0,
+    "y": 0
+  },
+  "customers": [
+    {
+      "id": 1,
+      "x": 10,
+      "y": 15,
+      "demand": 4,
+      "name": "Customer A"
+    },
+    {
+      "id": 2,
+      "x": -8,
+      "y": 12,
+      "demand": 3,
+      "name": "Customer B"
+    },
+    {
+      "id": 3,
+      "x": 5,
+      "y": -10,
+      "demand": 5,
+      "name": "Customer C"
+    },
+    {
+      "id": 4,
+      "x": -12,
+      "y": -5,
+      "demand": 2,
+      "name": "Customer D"
+    },
+    {
+      "id": 5,
+      "x": 8,
+      "y": 8,
+      "demand": 6,
+      "name": "Customer E"
+    }
+  ],
+  "vehicle_capacity": 20
+}

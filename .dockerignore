@@ -1,0 +1,54 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info
+.eggs
+dist
+build
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.venv
+venv
+env
+
+# Node
+node_modules
+.npm
+.pnpm-store
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Tests (for production builds)
+tests/
+**/test_*.py
+**/*.test.js
+**/*.spec.js
+
+# Examples
+examples/
+
+# Local config
+.env
+.env.local
+*.local
+
+# Logs
+*.log
+npm-debug.log*

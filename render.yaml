@@ -1,0 +1,28 @@
+# Render Blueprint - Q-Route Alpha
+# Deploy with: https://render.com/deploy
+
+services:
+  # Backend API Service
+  - type: web
+    name: q-route-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: APP_VERSION
+        value: "0.1.0"
+      - key: CORS_ORIGINS
+        value: "https://q-route-frontend.onrender.com"
+      - key: MAX_CUSTOMERS
+        value: "50"
+
+  # Frontend Service
+  - type: web
+    name: q-route-frontend
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    envVars:
+      - key: VITE_API_URL
+        value: "/api"

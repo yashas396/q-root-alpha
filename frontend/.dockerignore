@@ -1,0 +1,25 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+dist
+
+# IDE
+.idea
+.vscode
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local env
+.env
+.env.local
+*.local
+
+# Test files
+*.test.js
+*.spec.js
+coverage
