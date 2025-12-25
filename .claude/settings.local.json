@@ -15,7 +15,12 @@
       "Bash(cmd.exe /c \"docker --version\")",
       "Bash(curl:*)",
       "Bash(npm test:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(railway:*)",
+      "Bash(echo:*)",
+      "Bash(python -c:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }

@@ -220,7 +220,7 @@ def plot_route(
     # -------------------------------------------------------------------------
     # Add title and labels
     # -------------------------------------------------------------------------
-    status_text = "✓ FEASIBLE" if is_feasible else "✗ INFEASIBLE"
+    status_text = "[OK] FEASIBLE" if is_feasible else "[X] INFEASIBLE"
     status_color = "#00ff88" if is_feasible else "#ff4757"
     
     ax.set_title(
@@ -249,7 +249,7 @@ def plot_route(
     # -------------------------------------------------------------------------
     # Add route summary text box
     # -------------------------------------------------------------------------
-    route_str = " → ".join(map(str, route))
+    route_str = " -> ".join(map(str, route))
     textstr = f"Route: {route_str}\nExecution Time: {solution['execution_time']:.3f}s"
     
     props = dict(boxstyle='round', facecolor='#1a1a2e', edgecolor='white', alpha=0.9)
@@ -285,7 +285,7 @@ def plot_route(
     # -------------------------------------------------------------------------
     plt.tight_layout()
     plt.savefig(save_path, dpi=150, facecolor=fig.get_facecolor(), edgecolor='none')
-    print(f"\n[✓] Route plot saved to: {save_path}")
+    print(f"\n[OK] Route plot saved to: {save_path}")
     
     if show_plot:
         plt.show()
@@ -391,11 +391,11 @@ def main():
     print("=" * 70)
     print()
     print("  Summary:")
-    print(f"    • Route: {' → '.join(map(str, solution['route']))}")
-    print(f"    • Distance: {solution['total_distance']:.2f} units")
-    print(f"    • Valid: {'Yes ✓' if solution['is_feasible'] else 'No ✗'}")
-    print(f"    • Time: {solution['execution_time']:.3f} seconds")
-    print(f"    • Plot: {plot_path}")
+    print(f"    - Route: {' -> '.join(map(str, solution['route']))}")
+    print(f"    - Distance: {solution['total_distance']:.2f} units")
+    print(f"    - Valid: {'Yes [OK]' if solution['is_feasible'] else 'No [X]'}")
+    print(f"    - Time: {solution['execution_time']:.3f} seconds")
+    print(f"    - Plot: {plot_path}")
     print()
     print("  Cost: $0.00 (local simulation only)")
     print()

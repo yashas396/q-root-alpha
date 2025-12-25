@@ -7,10 +7,10 @@ import axios from 'axios';
 
 // API base URL - configurable via environment variable
 // In production (Docker): uses /api which nginx proxies to backend
-// In development: uses VITE_API_URL or defaults to localhost:8000
+// In development: uses VITE_API_URL or defaults to localhost:8080
 const API_BASE = import.meta.env.PROD
   ? '/api'
-  : (import.meta.env.VITE_API_URL || 'http://localhost:8000');
+  : (import.meta.env.VITE_API_URL || 'http://localhost:8080');
 
 const apiClient = axios.create({
   baseURL: API_BASE,
